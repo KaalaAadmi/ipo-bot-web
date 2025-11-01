@@ -4,9 +4,10 @@ import { clientPromise, dbName } from "@/lib/mongodb";
 
 export async function GET(req: NextRequest) {
   try {
+    const collection_name = process.env.MONGODB_COLLECTION_NAME || "ipo_status";
     const client = await clientPromise;
     const db = client.db(dbName);
-    const collection = db.collection("ipo_status"); // Assuming your collection is named 'ipos'
+    const collection = db.collection(collection_name);
 
     const { searchParams } = new URL(req.url);
     const tab = searchParams.get("tab") || "live";

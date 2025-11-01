@@ -8,6 +8,8 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
+    const collection_name = process.env.MONGODB_COLLECTION_NAME || "ipo_status";
+
     const awaitedParams = await params;
     const id = awaitedParams.id;
     if (!id || !ObjectId.isValid(id)) {
@@ -37,7 +39,7 @@ export async function PATCH(
     const db = client.db(dbName);
 
     const result = await db
-      .collection("ipo_status")
+      .collection(collection_name)
       .updateOne({ _id: new ObjectId(id) }, { $set: updateFields });
 
     if (result.matchedCount === 0) {
