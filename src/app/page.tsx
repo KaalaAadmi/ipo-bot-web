@@ -115,7 +115,7 @@ export default function Home() {
                     onClick={() => setPage((p) => Math.max(1, p - 1))}
                     disabled={page === 1}
                   >
-                    <PaginationPrevious className="mr-2" /> Previous
+                    <PaginationPrevious className="mr-2" />
                   </Button>
                 </PaginationItem>
                 <PaginationItem className="mx-4 font-medium">
@@ -127,7 +127,7 @@ export default function Home() {
                     onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
                   >
-                    Next <PaginationNext className="ml-2" />
+                    <PaginationNext className="ml-2" />
                   </Button>
                 </PaginationItem>
               </PaginationContent>
